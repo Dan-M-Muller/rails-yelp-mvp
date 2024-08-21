@@ -1,0 +1,20 @@
+<div class="card">
+  <h1 class="card-header"><%= @restaurant.name %></h5>
+  <div class="card-body">
+    <h5 class="card-title"><%= @restaurant.category %> food</h5>
+    <p class="card-text"><%= @restaurant.address %></p>
+    <hr>
+    <p class="card-text"><%= @restaurant.phone_number %></p>
+    <%= link_to 'Back to all Restaurants', restaurants_path, class: 'btn btn-secondary' %>
+  </div>
+  <div class="card">
+    <h3 class="card-header">Reviews</h3>
+    <% @restaurant.reviews.each do |rv| %>
+      <div class="card-body">
+        <h5 class="card-title"><%= '⭐️' *(rv.rating || 0) %></h5>
+        <p class="card-text"><%= rv.content %></p>
+      </div>
+    <% end %>
+    <%= link_to 'Add a review',  new_restaurant_review_path(@restaurant), class: 'btn btn-primary' %>
+  </div>
+</div>
